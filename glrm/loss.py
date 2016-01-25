@@ -38,6 +38,11 @@ class HingeLoss(Loss):
     def decode(self, A): return sign(A) # return back to Boolean
     def __str__(self): return "hinge loss"
 
+
+class PoissonLoss(Loss):
+    raise NotImplementedError, 'Poisson Loss not yet implemented'
+
+
 class OrdinalLoss(Loss):
     def __init__(self, A):
         self.Amax, self.Amin = A.max(), A.min()
