@@ -40,7 +40,8 @@ class HingeLoss(Loss):
 
 
 class PoissonLoss(Loss):
-    raise NotImplementedError, 'Poisson Loss not yet implemented'
+    def __init__(self):
+        raise NotImplementedError, 'Poisson Loss not yet implemented'
 
 
 class OrdinalLoss(Loss):
