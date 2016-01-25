@@ -11,7 +11,7 @@ import cvxpy as cp
 class GLRM(object):
 
     def __init__(self, A, loss, regX, regY, k, missing_list = None, converge = None, scale=True):
-        
+
         self.scale = scale
         # Turn everything in to lists / convert to correct dimensions
         if not isinstance(A, list): A = [A]
@@ -62,7 +62,6 @@ class GLRM(object):
                         use_indirect=use_indirect, warm_start=warm_start)
                 ypj.value = copy(yvj.value)
             self.converge.obj.append(objX)
-
         self._finalize_XY(Xv, Yv)
         return self.X, self.Y
 
@@ -161,7 +160,7 @@ class GLRM(object):
 
     def _finalize_XY(self, Xv, Yv):
         """ Multiply by std, offset by mean """
-        m, k = Xv.shape.size
+        m, k = Xv.size
         self.X = asarray(hstack((Xv.value, ones((m,1)))))
         self.Y = [asarray(yj.value)*tile(mask[0,:],(k+1,1)) \
                 for yj, mask in zip(Yv, self.masks)]
